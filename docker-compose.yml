@@ -8,9 +8,10 @@ services:
     ports:
       - "${PORT:-8000}:${PORT:-8000}"
     volumes:
-      - '/mnt/NAS/NAS20tbHDD/UHF/recordings:/recordings'
+      # - '/mnt/NAS/NAS20tbHDD/UHF/recordings:/recordings'
+      - './recordings:/recordings'
     environment:
       - PORT=${PORT:-8000}
-      - PASSWORD=${PASSWORD:-} # Optional password protection
+      - PASSWORD=${PASSWORD:-}
     command: uhf-server --port ${PORT:-8000} --recordings-dir /recordings ${PASSWORD:+--password ${PASSWORD}}
     stop_grace_period: 30s
